@@ -11,6 +11,7 @@ public class PlayerControllerX : MonoBehaviour
     public bool hasPowerup;
     public GameObject powerupIndicator;
     public int powerUpDuration = 5;
+    public float jumpForce = 5.0f;
 
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
@@ -29,6 +30,13 @@ public class PlayerControllerX : MonoBehaviour
 
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
+
+        //------
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRb.AddForce(Vector3.forward * jumpForce, ForceMode.Impulse);
+        }
 
     }
 
